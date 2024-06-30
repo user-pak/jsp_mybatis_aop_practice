@@ -1,0 +1,54 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="playerMapper">
+  <resultMap type="Player" id="playerResultMap">
+    <id column="PLAYER_ID" property="playerId"/>
+    <result column="PLAYER_NAME" property="playerName"/>
+    <result column="TEAM_ID" property="teamId"/>
+    <result column="E_PLAYER_NAME" property="ePlayerName"/>
+  	<result column="NICKNAME" property="nickname" />
+  	<result column="JOINYEAR" property="joinYear"/>
+  	<result column="POSITION" property="position"></result>
+  	<result column="BACK_NO" property="backNo"/>
+  	<result column="NATION" property="nation"/>
+  	<result column="BIRTH_DATE" property="birthDate"/>
+  	<result column="SOLAR" property="solar"/>
+  	<result column="HEIGHT" property="height"/>
+  	<result column="WEIGHT" property="weight"/>
+   
+  </resultMap>
+
+  <select id="selectPlayer" resultMap="playerResultMap">
+    SELECT * FROM PLAYER
+  </select>
+  
+  <select id="searchATeamPlayers" resultMap="playerResultMap">
+  	SELECT PLAYER_NAME, POSITION, BACK_NO, HEIGHT
+  	FROM PLAYER
+  	WHERE TEAM_ID = #{teamName}  
+  </select>
+<!--   <insert id="insert"> -->
+<!--       insert into users (id, name, funkyNumber, roundingMode) values ( -->
+<!--         #{id}, #{name}, #{funkyNumber}, #{roundingMode} -->
+<!--       ) -->
+<!--   </insert> -->
+
+<!--   <resultMap type="org.apache.ibatis.submitted.rounding.User" id="usermap2"> -->
+<!--     <id column="id" property="id"/> -->
+<!--     <result column="name" property="name"/> -->
+<!--     <result column="funkyNumber" property="funkyNumber"/> -->
+<!--     <result column="roundingMode" property="roundingMode" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/> -->
+<!--   </resultMap> -->
+<!--   <select id="getUser2" resultMap="usermap2"> -->
+<!--     select * from users2 -->
+<!--   </select> -->
+<!--   <insert id="insert2"> -->
+<!--       insert into users2 (id, name, funkyNumber, roundingMode) values ( -->
+<!--         #{id}, #{name}, #{funkyNumber}, #{roundingMode, typeHandler=org.apache.ibatis.type.EnumTypeHandler} -->
+<!--       ) -->
+<!--   </insert> -->
+
+</mapper>
